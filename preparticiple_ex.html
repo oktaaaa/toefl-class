@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>🎉 Present Participle Exercise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0f172a;
+            --muted: #475569;
+            --brand: #0ea5e9;
+            --accent: #8b5cf6;
+            --ok: #16a34a;
+            --bad: #ef4444;
+            --card: #ffffff;
+            --bg: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: Nunito, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+            background: var(--bg);
+            color: var(--ink)
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            color: #fff;
+            padding: 14px 18px
+        }
+
+        .wrap {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 22px 16px 80px
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(22px, 4vw, 34px)
+        }
+
+        .sub {
+            opacity: .9;
+            font-weight: 700
+        }
+
+        .board {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+            margin-top: 16px
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 16px
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-weight: 800;
+            border: 1px solid #cbd5e1;
+            background: #fff
+        }
+
+        .q-text {
+            font-size: 18px;
+            margin: 0 0 12px
+        }
+
+        .choices {
+            display: grid;
+            gap: 10px
+        }
+
+        .choice {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 12px;
+            cursor: pointer;
+            background: #ffffff
+        }
+
+        .choice:hover {
+            border-color: #94a3b8
+        }
+
+        .choice input {
+            margin-top: 3px
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: 900;
+            display: none
+        }
+
+        .feedback.ok {
+            color: var(--ok)
+        }
+
+        .feedback.bad {
+            color: var(--bad)
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 12px
+        }
+
+        button {
+            border: none;
+            border-radius: 12px;
+            padding: 10px 14px;
+            font-weight: 900;
+            cursor: pointer;
+            color: #fff;
+            background: linear-gradient(180deg, var(--brand), var(--accent));
+        }
+
+        button.secondary {
+            background: #0ea5e916;
+            color: #0f172a;
+            border: 1px solid #bae6fd
+        }
+
+        button:disabled {
+            opacity: .5;
+            cursor: not-allowed
+        }
+
+        .bar {
+            height: 10px;
+            background: #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden
+        }
+
+        .fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #22d3ee, #22c55e);
+            transition: width .3s ease
+        }
+
+        .summary {
+            background: #ffffff;
+            border: 2px dashed #a78bfa;
+            border-radius: 16px;
+            padding: 16px;
+            display: none
+        }
+
+        .summary h2 {
+            margin: 0 0 8px
+        }
+
+        .score-badge {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 12px;
+            font-weight: 900;
+            background: #ecfeff;
+            color: #155e75;
+            border: 1px solid #a5f3fc
+        }
+
+        /* Fun confetti */
+        .confetti {
+            position: fixed;
+            inset: 0;
+            pointer-events: none
+        }
+
+        .confetti i {
+            position: absolute;
+            width: 8px;
+            height: 12px;
+            opacity: 0;
+            animation: drop 1200ms linear forwards
+        }
+
+        @keyframes drop {
+            0% {
+                transform: translateY(-20vh) rotate(0)
+            }
+
+            70% {
+                opacity: 1
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(540deg);
+                opacity: 0
+            }
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 720px) {
+            .choices {
+                grid-template-columns: 1fr
+            }
+
+            .row {
+                flex-direction: column;
+                align-items: flex-start
+            }
+
+            .controls {
+                width: 100%
+            }
+
+            button {
+                flex: 1
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="wrap">
+            <h1>🎉 Present‑Tense Power Quiz</h1>
+            <div class="sub">20 quick multiple‑choice questions • Earn your grammar badge 💪</div>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <div class="board">
+            <div class="card">
+                <div class="row"><span class="pill">📍 Question <span id="qnum">1</span>/20</span><span
+                        class="pill">Progress <span id="pct">0%</span></span></div>
+                <div class="bar" aria-hidden="true">
+                    <div id="bar" class="fill"></div>
+                </div>
+                <p id="q" class="q-text"></p>
+                <div id="choices" class="choices"></div>
+                <div id="fb" class="feedback"></div>
+                <div class="controls">
+                    <button id="check">Check Answer</button>
+                    <button id="next" class="secondary" disabled>Next ▶</button>
+                    <button id="prev" class="secondary" disabled>◀ Prev</button>
+                    <button id="review" class="secondary" disabled>Review Mistakes</button>
+                    <button id="restart" class="secondary">Restart</button>
+                </div>
+            </div>
+            <div id="summary" class="summary">
+                <h2>🏆 You did it!</h2>
+                <p>Score: <span class="score-badge"><span id="score"></span>/20 correct</span></p>
+                <p id="praise"></p>
+                <div class="controls"><button id="try-again">Try Again</button></div>
+            </div>
+        </div>
+    </main>
+
+    <div id="fx" class="confetti" aria-hidden="true"></div>
+
+    <script>
+        // Questions sourced from your PDF (lightly formatted)
+        const QS = [{
+                t: "The company's new wellness program ______ employees to take short breaks throughout the day.",
+                c: ["encouraging", "encourages", "encourage", "it encourages"],
+                a: 1
+            },
+            {
+                t: "The sound of ______ leaves broke the silence of the autumn afternoon.",
+                c: ["rustling", "rustle", "rustles", "it rustles"],
+                a: 0
+            },
+            {
+                t: "The new chef ______ a unique blend of spices for her signature dish.",
+                c: ["using", "use", "uses", "to use"],
+                a: 2
+            },
+            {
+                t: "It was a ______ story, and he couldn't put the book down until he had finished it.",
+                c: ["fascinating", "fascinate", "fascinates", "it fascinates"],
+                a: 0
+            },
+            {
+                t: "The new traffic law ______ drivers from using their phones.",
+                c: ["prohibits", "prohibiting", "prohibit", "it prohibits"],
+                a: 0
+            },
+            {
+                t: "The ______ temperatures are a sign of summer.",
+                c: ["rising", "rise", "rises", "it rises"],
+                a: 0
+            },
+            {
+                t: "This guidebook ______ information about the best local restaurants.",
+                c: ["containing", "contain", "contains", "it contains"],
+                a: 2
+            },
+            {
+                t: "His performance in the play was ______.",
+                c: ["astonishes", "astonishing", "astonish", "it astonishes"],
+                a: 1
+            },
+            {
+                t: "The sun ______ a warm, golden light over the entire valley.",
+                c: ["casting", "cast", "casts", "it cast"],
+                a: 2
+            },
+            {
+                t: "The ______ rules of the new game made it difficult for beginners.",
+                c: ["confuse", "confuses", "confusing", "it confuses"],
+                a: 2
+            },
+            {
+                t: "The documentary ______ the challenges for polar.",
+                c: ["highlighting", "highlight", "highlights", "it highlights"],
+                a: 2
+            },
+            {
+                t: "The ______ noise from the party next door made it impossible to sleep.",
+                c: ["annoying", "annoy", "annoys", "it annoys"],
+                a: 0
+            },
+            {
+                t: "According to the schedule, the next flight to Singapore ______ in twenty minutes.",
+                c: ["departs", "departing", "depart", "it departs"],
+                a: 0
+            },
+            {
+                t: "The athlete's ______ recovery from the injury amazed his doctors and teammates.",
+                c: ["surprise", "surprises", "surprising", "it surprises"],
+                a: 2
+            },
+            {
+                t: "The ancient castle ______ on a hill.",
+                c: ["standing", "stands", "stand", "it stands"],
+                a: 1
+            },
+            {
+                t: "The graphics in the new video game look incredibly realistic and ______.",
+                c: ["stun", "stuns", "stunning", "it stuns"],
+                a: 2
+            },
+            {
+                t: "This particular recipe ______ for two cups of flour and one cup of sugar.",
+                c: ["calling", "call", "calls", "it calls"],
+                a: 2
+            },
+            {
+                t: "The comedian told a series of ______ jokes for the audience.",
+                c: ["amusing", "amuse", "amuses", "it amuses"],
+                a: 0
+            },
+            {
+                t: "The university ______ a wide range of courses in both the arts and sciences.",
+                c: ["offering", "offers", "offer", "it offers"],
+                a: 1
+            },
+            {
+                t: "We found the constant interruptions to be very ______ during the meeting.",
+                c: ["distracting", "distract", "distracts", "it distracts"],
+                a: 0
+            },
+        ];
+
+        // State
+        let i = 0; // current question index
+        const state = {
+            answers: Array(QS.length).fill(null),
+            correct: Array(QS.length).fill(false)
+        };
+
+        const elQ = document.getElementById('q');
+        const elChoices = document.getElementById('choices');
+        const elFb = document.getElementById('fb');
+        const elBar = document.getElementById('bar');
+        const elPct = document.getElementById('pct');
+        const elNum = document.getElementById('qnum');
+
+        const btnCheck = document.getElementById('check');
+        const btnNext = document.getElementById('next');
+        const btnPrev = document.getElementById('prev');
+        const btnRestart = document.getElementById('restart');
+        const btnReview = document.getElementById('review');
+
+        const boxSummary = document.getElementById('summary');
+        const elScore = document.getElementById('score');
+        const elPraise = document.getElementById('praise');
+
+        function render() {
+            const q = QS[i];
+            elQ.innerHTML = (i + 1) + '. ' + q.t;
+            elChoices.innerHTML = q.c.map((txt, idx) => {
+                const id = `q${i}_c${idx}`;
+                const checked = state.answers[i] === idx ? 'checked' : '';
+                return `<label for="${id}" class="choice"><input ${checked} id="${id}" name="q${i}" type="radio" value="${idx}"><strong>(${String.fromCharCode(65+idx)})</strong> <span>${txt}</span></label>`
+            }).join('');
+            elFb.style.display = 'none';
+
+            // nav / progress
+            elNum.textContent = i + 1;
+            const answered = state.answers.filter(v => v !== null).length;
+            const pct = Math.round((answered / QS.length) * 100);
+            elBar.style.width = pct + '%';
+            elPct.textContent = pct + '%';
+            btnPrev.disabled = i === 0;
+            btnNext.disabled = true;
+            btnReview.disabled = !state.correct.some(v => v === false && v !== null) || answered !== QS.length;
+
+            // restore selection change
+            elChoices.querySelectorAll('input[type="radio"]').forEach(r => {
+                r.addEventListener('change', () => {
+                    btnNext.disabled = false;
+                });
+            });
+        }
+
+        function check() {
+            const sel = getSelected();
+            if (sel == null) {
+                toast('Pick an answer first!');
+                return
+            }
+            state.answers[i] = sel;
+            const right = QS[i].a === sel;
+            state.correct[i] = right;
+            showFeedback(right);
+            save();
+            if (allAnswered()) finish();
+        }
+
+        function getSelected() {
+            const r = elChoices.querySelector('input[type="radio"]:checked');
+            return r ? +r.value : null;
+        }
+
+        function showFeedback(ok) {
+            elFb.style.display = 'block';
+            elFb.className = 'feedback ' + (ok ? 'ok' : 'bad');
+            elFb.textContent = ok ? '✅ Correct!' :
+                `❌ Not quite. Correct answer: ${("ABCD")[QS[i].a]} (${QS[i].c[QS[i].a]})`;
+        }
+
+        function next() {
+            if (i < QS.length - 1) {
+                i++;
+                render();
+            }
+        }
+
+        function prev() {
+            if (i > 0) {
+                i--;
+                render();
+            }
+        }
+
+        function allAnswered() {
+            return state.answers.every(v => v !== null);
+        }
+
+        function finish() {
+            const score = state.correct.filter(Boolean).length;
+            elScore.textContent = score;
+            elPraise.textContent = score >= 18 ? 'Grammar superhero! 🦸‍♀️' : score >= 15 ?
+                'Great job! Keep polishing ✨' : 'Nice effort—review and try again! 💪';
+            boxSummary.style.display = 'block';
+            confetti();
+        }
+
+        function restart() {
+            state.answers.fill(null);
+            state.correct.fill(false);
+            i = 0;
+            boxSummary.style.display = 'none';
+            save();
+            render();
+        }
+
+        function reviewMistakes() {
+            // jump to first wrong question
+            const idx = state.correct.findIndex((ok, ii) => state.answers[ii] !== null && ok === false);
+            if (idx > -1) {
+                i = idx;
+                render();
+                toast('Review your missed questions.');
+            }
+        }
+
+        // Simple confetti burst
+        function confetti() {
+            const fx = document.getElementById('fx');
+            fx.innerHTML = '';
+            const colors = ['#06b6d4', '#22c55e', '#f59e0b', '#ef4444', '#8b5cf6'];
+            for (let k = 0; k < 120; k++) {
+                const p = document.createElement('i');
+                p.style.left = (Math.random() * 100) + '%';
+                p.style.background = colors[Math.floor(Math.random() * colors.length)];
+                p.style.transform = `translateY(-20vh) rotate(${Math.random()*360}deg)`;
+                p.style.animationDelay = (Math.random() * 500) + 'ms';
+                fx.appendChild(p);
+            }
+            setTimeout(() => fx.innerHTML = '', 1600);
+        }
+
+        // tiny toast
+        function toast(msg) {
+            const t = document.createElement('div');
+            t.textContent = msg;
+            t.style.position = 'fixed';
+            t.style.left = '50%';
+            t.style.top = '12px';
+            t.style.transform = 'translateX(-50%)';
+            t.style.background = '#111827';
+            t.style.color = '#fff';
+            t.style.padding = '8px 12px';
+            t.style.borderRadius = '12px';
+            t.style.boxShadow = '0 6px 16px #0003';
+            t.style.zIndex = 1000;
+            document.body.appendChild(t);
+            setTimeout(() => t.remove(), 1500);
+        }
+
+        // Persistence
+        const KEY = 'present-quiz-v1';
+
+        function save() {
+            localStorage.setItem(KEY, JSON.stringify(state));
+        }
+
+        function load() {
+            try {
+                const s = JSON.parse(localStorage.getItem(KEY));
+                if (!s) return;
+                state.answers = s.answers || state.answers;
+                state.correct = s.correct || state.correct;
+            } catch {}
+        }
+
+        // events
+        document.getElementById('check').addEventListener('click', check);
+        document.getElementById('next').addEventListener('click', () => {
+            save();
+            next();
+        });
+        document.getElementById('prev').addEventListener('click', () => {
+            save();
+            prev();
+        });
+        document.getElementById('restart').addEventListener('click', () => {
+            localStorage.removeItem(KEY);
+            restart();
+        });
+        document.getElementById('try-again').addEventListener('click', restart);
+        document.getElementById('review').addEventListener('click', reviewMistakes);
+
+        // enable Next once a selection is made
+        document.addEventListener('change', e => {
+            if (e.target.matches('input[type="radio"]')) {
+                document.getElementById('next').disabled = false;
+            }
+        });
+
+        // init
+        load();
+        render();
+    </script>
+</body>
+
+</html>
