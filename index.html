@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +13,7 @@
       background: #f0f9ff;
       color: #1e293b;
     }
+
     header {
       background: linear-gradient(90deg, #6366f1, #8b5cf6);
       color: white;
@@ -20,11 +22,13 @@
       font-size: 24px;
       font-weight: 900;
     }
+
     .dashboard {
       display: grid;
       grid-template-columns: 250px 1fr;
       height: calc(100vh - 70px);
     }
+
     nav {
       background: #1e293b;
       color: white;
@@ -33,6 +37,7 @@
       padding: 20px;
       gap: 12px;
     }
+
     nav a {
       color: white;
       text-decoration: none;
@@ -41,38 +46,46 @@
       border-radius: 8px;
       transition: background 0.2s;
     }
+
     nav a:hover {
       background: #334155;
     }
+
     main {
       padding: 20px;
       overflow-y: auto;
     }
+
     h2 {
       margin-top: 0;
     }
+
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 16px;
       margin-top: 20px;
     }
+
     .card {
       background: white;
       border-radius: 12px;
       padding: 16px;
       text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       transition: transform 0.2s;
       cursor: pointer;
     }
+
     .card:hover {
       transform: translateY(-4px);
     }
+
     .card-icon {
       font-size: 36px;
       margin-bottom: 10px;
     }
+
     .badge {
       display: inline-block;
       background: #10b981;
@@ -82,6 +95,7 @@
       border-radius: 999px;
       margin-top: 8px;
     }
+
     footer {
       text-align: center;
       padding: 10px;
@@ -89,8 +103,33 @@
       font-size: 14px;
       color: #475569;
     }
+
+    /* Responsive for phones */
+    @media (max-width: 768px) {
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        flex-direction: row;
+        overflow-x: auto;
+        justify-content: space-around;
+        padding: 10px;
+      }
+
+      nav a {
+        font-size: 14px;
+        padding: 8px;
+        white-space: nowrap;
+      }
+
+      main {
+        padding: 16px;
+      }
+    }
   </style>
 </head>
+
 <body>
   <header>TOEFL Class</header>
 
@@ -138,4 +177,5 @@
 
   <footer>© 2025 Okta's TOEFL Class</footer>
 </body>
+
 </html>
