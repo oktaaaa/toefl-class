@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Day X: Verb Detective! 🕵️‍♀️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0f172a;
+      --muted: #475569;
+      --brand: #0ea5e9;
+      /* cyan-500 */
+      --accent: #8b5cf6;
+      /* violet-500 */
+      --success: #059669;
+      /* emerald-600 */
+      --danger: #dc2626;
+      /* red-600 */
+      --card: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      font-family: Nunito, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: #f8fafc;
+      color: var(--ink);
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 18px 80px
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .title {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex: 1 1 500px;
+    }
+
+    .badge {
+      background: linear-gradient(135deg, var(--brand), var(--accent));
+      color: #fff;
+      font-weight: 900;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: .5px
+    }
+
+    h1 {
+      margin: 8px 0 0;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.05
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      align-items: center
+    }
+
+    button,
+    .btn {
+      border: none;
+      padding: 10px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(180deg, var(--brand), var(--accent));
+      transition: transform .05s ease, filter .2s ease;
+    }
+
+    button:hover {
+      filter: brightness(1.05)
+    }
+
+    button:active {
+      transform: translateY(1px)
+    }
+
+    .print {
+      background: linear-gradient(180deg, #6366f1, #a78bfa)
+    }
+
+    .progress-wrap {
+      margin: 18px 0 28px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 14px
+    }
+
+    .progress-bar {
+      height: 10px;
+      border-radius: 8px;
+      background: #e5e7eb;
+      overflow: hidden
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--brand), var(--success));
+      transition: width .4s ease
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px
+    }
+
+    @media(min-width:860px) {
+      .grid {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 16px;
+      position: relative;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 18px
+    }
+
+    .meta {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px
+    }
+
+    .pill {
+      border: 1px solid #cbd5e1;
+      border-radius: 999px;
+      padding: 2px 8px
+    }
+
+    .incorrect {
+      background: #fff7f7;
+      border-left: 4px solid var(--danger);
+      padding: 10px;
+      border-radius: 10px;
+      margin: 10px 0
+    }
+
+    .correction {
+      background: #ecfdf5;
+      border-left: 4px solid var(--success);
+      padding: 10px;
+      border-radius: 10px;
+      margin: 10px 0
+    }
+
+    details {
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 10px 12px
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 900
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px
+    }
+
+    .mark-btn {
+      background: linear-gradient(180deg, #22d3ee, #0ea5e9)
+    }
+
+    .foot {
+      margin-top: 24px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 16px
+    }
+
+    .checklist li {
+      margin: 8px 0;
+      list-style: none
+    }
+
+    .checklist input {
+      transform: translateY(1px)
+    }
+
+    .muted {
+      color: var(--muted)
+    }
+
+    .divider {
+      height: 1px;
+      background: #e2e8f0;
+      margin: 20px 0
+    }
+
+    .accent {
+      color: var(--brand)
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="title">
+        <!-- <span class="badge">Day X • Grammar Workshop</span> -->
+        <h1>Present Participle <span class="accent">🕵️‍♀️</span></h1>
+      </div>
+      <div class="controls">
+        <button class="print" onclick="window.print()" title="Print / Save as PDF">🖨️ Print</button>
+      </div>
+    </header>
+
+    <div class="progress-wrap">
+      <div class="row">
+        <strong>Lesson Progress</strong>
+        <span class="muted"><span id="done-count">0</span>/5 understood</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress"></div>
+      </div>
+    </div>
+
+    <p class="muted">Today’s mission: learn to find the <strong>true main verb</strong> and fix sentences cleanly. Click
+      each card, review the explanation, and mark it as understood.</p>
+
+    <section class="grid" id="cards"></section>
+
+    <div class="foot">
+      <h2 style="margin-top:0">✅ Success Checklist</h2>
+      <ul class="checklist" id="checklist">
+        <li><label><input type="checkbox"> Identify the true main verb in a sentence.</label></li>
+        <li><label><input type="checkbox"> Explain why other verbs are descriptive, not core.</label></li>
+        <li><label><input type="checkbox"> Correct sentences with misplaced verbs.</label></li>
+        <li><label><input type="checkbox"> Apply this skill in your own writing.</label></li>
+      </ul>
+      <div class="row">
+        <em class="muted">Tip: your progress auto‑saves in this browser.</em>
+        <button id="reset">Reset Progress</button>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <p class="muted">© Okta TOEFL class</p>
+  </div>
+
+  <script>
+    const DATA = [{
+        icon: "💻",
+        title: "Example 1",
+        incorrect: "The new software is running on the server has several security vulnerabilities.",
+        analysis: ["Without ‘is running’: ✅ The new software on the server has several security vulnerabilities.",
+          "Without ‘has’: ❌ The new software is running on the server several security vulnerabilities.",
+          "Verdict: The main verb is <b>has</b>."
+        ],
+        correction: "The new software running on the server <b>has</b> several security vulnerabilities."
+      },
+      {
+        icon: "🧬",
+        title: "Example 2",
+        incorrect: "The cells are producing the enzyme are resistant to the virus.",
+        analysis: ["‘The cells are resistant to the virus.’ ✅ (complete)",
+          "‘The cells are producing the enzyme.’ (This can work too)",
+          "However, to be able to use the whole sentence, we just need one verb (has).",
+          "Change are producing -> producing",
+          "Verdict: The main verb phrase is <b>are resistant</b>."
+        ],
+        correction: "The cells producing the enzyme <b>are</b> resistant to the virus."
+      },
+      {
+        icon: "📊",
+        title: "Example 3",
+        incorrect: "The corporation was posting significant profits announced a new round of hiring.",
+        analysis: [
+        "There are two verbs: <b>'was posting' and 'announced'</b>",
+        "We just need one verb in this sentence",
+        "Without 'was posting': The corporation <b>announced</b> something. ✅",
+          "Without ‘announced’: The corporation was posting significant profits a new round of hiring. ❌",
+        "Without announced, the sentence doesn't make sense and has differenct meaning.",
+        "Change are posting -> posting", 
+        "Verdict: The main verb is <b>announced</b>."
+        ],
+        correction: "The corporation posting significant profits <b>announced</b> a new round of hiring."
+      },
+      {
+        icon: "📜",
+        title: "Example ",
+        incorrect: "The laws were restricting trade between the colonies caused widespread discontent.",
+        analysis: [
+       "There are two verbs: <b>'were restricting' and 'caused'</b>",
+        "We just need one verb in this sentence",
+        "Without 'were restricting': The laws trade between the colonies <b>caused</b> widespread discontent. ✅",
+          "Without 'caused':  The laws were restricting trade between the colonies widespread discontent. ❌",
+          "Without caused, the sentence doesn't make sense and has differenct meaning.",
+          "Change were restricting -> restricting",
+          "Verdict: The main verb is <b>caused</b>."
+        ],
+        correction: "The laws restricting trade between the colonies <b>caused</b> widespread discontent."
+      },
+      {
+        icon: "🐶",
+        title: "Example 5",
+        incorrect: "The dog is barking loudly at the mailman belongs to my neighbor.",
+        analysis: [
+        "There are two verbs: <b>'is barking' and 'belongs'</b>",
+        "We just need one verb in this sentence",
+        "Without 'is barking': The dog loudly at the mailman <b>belongs</b> to my neighbor. ✅",
+          "Without 'caused':  The dog is barking loudly at the mailman to my neighbor. ❌",
+          "Without belongs, the sentence doesn't make sense and has differenct meaning.",
+          "Change is barking -> barking",
+          "Verdict: The main verb is <b>belongs</b>."
+        ],
+        correction: "The dog barking loudly at the mailman <b>belongs</b> to my neighbor."
+      }
+    ];
+
+    const cards = document.getElementById('cards');
+
+    function cardTemplate(item, idx) {
+      return `<article class="card" data-idx="${idx}"> <div class="meta"><span class="pill">${item.icon}</span><span class="pill">Case #${idx+1}</span></div><h3>${item.title}</h3><div class="incorrect"><strong>Incorrect</strong><br>${item.incorrect}</div><details><summary>🔎 Explanation</summary><ul style="margin:10px 0 0 18px">${item.analysis.map(a=>`<li style='margin:6px 0'>${a}</li>`).join('')}</ul></details><div class="correction"><strong>Correction</strong><br>${item.correction}</div><div class="row"><em class="muted">Mark as understood when this makes sense.</em><button class="mark-btn" data-mark="${idx}">✔️ Understood</button></div></article>`;
+    }
+
+    function render() {
+      cards.innerHTML = DATA.map(cardTemplate).join('');
+      const state = loadState();
+      state.done.forEach(i => {
+        const el = document.querySelector(`article[data-idx='${i}']`);
+        if (el) el.classList.add('done');
+      });
+      attachHandlers();
+      updateProgress();
+      restoreChecklist();
+    }
+
+    function attachHandlers() {
+      document.querySelectorAll('[data-mark]').forEach(btn => {
+        btn.addEventListener('click', e => {
+          const idx = +btn.dataset.mark;
+          const art = document.querySelector(`article[data-idx='${idx}']`);
+          art.classList.toggle('done');
+          const state = loadState();
+          if (art.classList.contains('done')) {
+            if (!state.done.includes(idx)) state.done.push(idx);
+          } else {
+            state.done = state.done.filter(n => n !== idx);
+          }
+          saveState(state);
+          updateProgress();
+        });
+      });
+    }
+
+    function updateProgress() {
+      const total = DATA.length;
+      const done = document.querySelectorAll('.card.done').length;
+      document.getElementById('done-count').textContent = done;
+      const pct = Math.round((done / total) * 100);
+      document.getElementById('progress').style.width = pct + '%';
+    }
+    const KEY = 'verb-detective-v1';
+
+    function loadState() {
+      try {
+        return JSON.parse(localStorage.getItem(KEY)) || {
+          done: [],
+          checks: []
+        };
+      } catch {
+        return {
+          done: [],
+          checks: []
+        };
+      }
+    }
+
+    function saveState(state) {
+      localStorage.setItem(KEY, JSON.stringify(state));
+    }
+
+    function restoreChecklist() {
+      const list = document.querySelectorAll('#checklist input[type="checkbox"]');
+      const state = loadState();
+      list.forEach((cb, i) => {
+        cb.checked = !!state.checks[i];
+        cb.addEventListener('change', () => {
+          const s = loadState();
+          s.checks[i] = cb.checked;
+          saveState(s);
+        });
+      });
+    }
+    document.getElementById('reset').addEventListener('click', () => {
+      localStorage.removeItem(KEY);
+      render();
+    });
+    render();
+  </script>
+</body>
+
+</html>
