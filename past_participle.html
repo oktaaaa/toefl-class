@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Past Participles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .interactive-example {
+            border-left: 4px solid #3b82f6;
+            background-color: #eff6ff;
+            cursor: pointer;
+        }
+
+        .answer-hidden {
+            background-color: #93c5fd;
+            color: #93c5fd;
+            border-radius: 0.25rem;
+            user-select: none;
+            transition: all 0.3s ease;
+        }
+
+        .answer-revealed {
+            background-color: transparent;
+            color: #1d4ed8;
+            font-weight: 600;
+        }
+
+        .quiz-option {
+            border: 2px solid #d1d5db;
+            transition: all 0.2s ease;
+        }
+
+        .quiz-option:hover {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+        }
+
+        .quiz-option.selected {
+            border-color: #3b82f6;
+            background-color: #dbeafe;
+        }
+
+        .quiz-option.correct {
+            border-color: #22c55e;
+            background-color: #dcfce7;
+        }
+
+        .quiz-option.incorrect {
+            border-color: #ef4444;
+            background-color: #fee2e2;
+        }
+
+        .toefl-trap {
+            background-color: #fefce8;
+            border: 2px dashed #facc15;
+        }
+
+        .explanation-box {
+            background-color: #f3f4f6;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-left: 4px solid #6b7280;
+        }
+    </style>
+</head>
+
+<body class="text-gray-800 p-4 sm:p-6 md:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-blue-600">Past Participles ✨</h1>
+            <p class="text-lg text-gray-600 mt-2">You guys better read this and understandddd</p>
+        </header>
+
+        <!-- What is a Past Participle? -->
+        <div class="card p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-3 text-blue-700">What is a Past Participle?</h2>
+            <p class="mb-4">A past participle is the third form of a verb (we call it V3). It's not a tense by itself,
+                but it's super important! For regular verbs, it just ends in <code
+                    class="bg-gray-200 p-1 rounded">-ed</code>.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                <div class="bg-gray-100 p-4 rounded-lg">eat ➔ ate ➔ <span class="font-bold text-blue-600">eaten</span>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-lg">go ➔ went ➔ <span class="font-bold text-blue-600">gone</span>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-lg">play ➔ played ➔ <span
+                        class="font-bold text-blue-600">played</span></div>
+            </div>
+            <p class="mt-4 font-semibold">It has three main jobs: forming perfect tenses, creating the passive voice,
+                and acting as an adjective.</p>
+        </div>
+
+        <!-- Role 1: Perfect Tenses -->
+        <div class="card p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-3 text-green-700">Role 1: With 'Have' Verbs (Perfect Tenses)</h2>
+            <p class="mb-4">This is used for actions completed in the past or continuing to the present. The rule is
+                simple:</p>
+            <p class="bg-green-100 text-green-800 font-semibold p-3 rounded-lg text-center mb-4">Subject + have / has /
+                had + Past Participle</p>
+            <p class="mb-2 font-semibold">👇 Click on the blurred text to reveal the past participle!</p>
+            <div class="interactive-example p-4 rounded-lg mb-2" onclick="revealAnswer(this)">
+                <p>She has <span class="answer-hidden">finished</span> her homework.</p>
+            </div>
+            <div class="interactive-example p-4 rounded-lg" onclick="revealAnswer(this)">
+                <p>They had <span class="answer-hidden">left</span> before we arrived.</p>
+            </div>
+            <div class="toefl-trap p-4 rounded-lg mt-6">
+                <p class="font-bold text-yellow-700">🚨 TOEFL TRAP ALERT!</p>
+                <p class="text-yellow-800">Watch out for questions that try to trick you! </p>
+                <p class="mt-2 text-sm bg-white p-3 rounded">"The scientist ____ a major breakthrough." <br>
+                    (A) finding <br>(B) find <br>(C) has found <br> (D) was found</p>
+                <br> <strong> Explanation</strong>: The sentence needs a complete verb. (C) provides the correct present
+                perfect structure. (D) is passive and doesn't make sense here.</p>
+            </div>
+        </div>
+
+        <!-- Role 2: Passive Voice -->
+        <div class="card p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-3 text-purple-700">Role 2: With 'Be' Verbs (Passive Voice) agente</h2>
+            <p class="mb-4">Use this when the subject of the sentence receives the action (it doesn't do the action).
+            </p>
+            <p class="bg-purple-100 text-purple-800 font-semibold p-3 rounded-lg text-center mb-4">Subject + be (am, is,
+                are, was, were, been) + Past Participle</p>
+            <p class="mb-2 font-semibold">👇 Click to reveal!</p>
+            <div class="interactive-example p-4 rounded-lg mb-2" onclick="revealAnswer(this)">
+                <p>The book was <span class="answer-hidden">written</span> by Shakespeare.</p>
+            </div>
+            <div class="interactive-example p-4 rounded-lg" onclick="revealAnswer(this)">
+                <p>The houses were <span class="answer-hidden">built</span> in 1990.</p>
+            </div>
+            <div class="toefl-trap p-4 rounded-lg mt-6">
+                <p class="font-bold text-yellow-700">🚨 TOEFL TRAP ALERT!</p>
+                <p class="text-yellow-800">Don't confuse active and passive! Ask yourself: did the subject do the
+                    action? If not, it's probably passive.</p>
+                <p class="mt-2 text-sm bg-white p-3 rounded">"The report____ by the committee.”<br> (A) wrote <br>(B)
+                    was written <br>(C) has written <br>(D) writing <br> </p>
+                <p>Click for Explanation</p>
+                <div class="interactive-example p-4 rounded-lg" onclick="revealAnswer(this)">
+                    <p class="answer-hidden">The report didn't write itself; it was written by someone. The passive
+                        voice (B) is required.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Role 3: As an Adjective -->
+        <div class="card p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-3 text-red-700">Role 3: As an Adjective (Tricky Stuff)</h2>
+            <p class="mb-4">A past participle can describe a noun, just like an adjective. It answers the question
+                "Which one?".</p>
+
+            <h3 class="font-semibold mb-2">Example 1: Before the noun</h3>
+            <p class="bg-orange-100 p-3 rounded-lg mb-4">The <strong class="text-red-600">broken</strong> window needs
+                to
+                be repaired. (Which window? The broken one.)</p>
+            <p class="bg-orange-100 p-3 rounded-lg mb-4">The <strong class="text-red-600">frozen</strong> water
+                expanded. (Which water? The frozen one.)</p>
+            <p class="bg-orange-100 p-3 rounded-lg mb-4">The <strong class="text-red-600">confused</strong> students
+                asked many questions.(Which students? The confused ones.)
+            </p>
+            <h3 class="font-semibold mb-2">Example 2: After the noun (Very common on tests)</h3>
+            <p class="bg-teal-100 p-3 rounded-lg mb-4">The theory <strong class="text-red-600">discussed</strong> in the
+                lecture is complex.</p>
+            <p class="bg-teal-100 p-3 rounded-lg">The girl <strong class="text-red-600">injured</strong> is in the
+                hospital.</p>
+            <div class="toefl-trap p-4 rounded-lg mt-6">
+                <p class="font-bold text-yellow-700">🚨 TOEFL TRAP ALERT!</p>
+                <p class="text-yellow-800">This is a major trap! Students see a word like "sent" and think it's the main
+                    verb. But the real verb is somewhere else!</p>
+                <p class="mt-2 text-sm bg-white p-3 rounded">Fragment: "The package <strong
+                        class="text-red-600">sent</strong> from the headquarters." (This has no main verb
+                    )<br>Correct Sentence: "The package <strong class="text-red-600">sent</strong> from the
+                    headquarters <strong class="text-green-600">arrived</strong> today." (Here, 'sent' describes the
+                    package, and 'arrived' is the main verb.)</p>
+            </div>
+        </div>
+        <div class="card p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-3 text-indigo-700">Adjective Duel: Present Participle or Past Participle?
+            </h2>
+            <p class="mb-4">When participles are adjectives, choosing between -ing and -ed can be tricky. Here's the
+                secret:</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-indigo-100 p-4 rounded-lg">
+                    <h3 class="font-bold text-indigo-800">Present Participle</h3>
+                    <p>Describes the <strong class="underline">cause</strong> of a feeling. It's the thing that makes
+                        you feel a certain way.</p>
+                    <p class="mt-2">Example: A <strong class="text-indigo-600">boring</strong> movie. <br> (The movie
+                        caused boredom).</p>
+                </div>
+                <div class="bg-pink-100 p-4 rounded-lg">
+                    <h3 class="font-bold text-pink-800">Past Participle</h3>
+                    <p>Describes the <strong class="underline">feeling</strong> itself. It's how a person (or thing)
+                        feels.</p>
+                    <p class="mt-2">Example: I was <strong class="text-pink-600">bored</strong> during the lecture.
+                        <br>(I felt the boredom).</p>
+                </div>
+            </div>
+            <p class="mt-6 mb-2 font-semibold">👇 Click to reveal the correct adjectives!</p>
+            <div class="interactive-example p-4 rounded-lg" onclick="revealAnswer(this)">
+                <p>The news was <span class="answer-hidden">surprising</span>. I was very <span
+                        class="answer-hidden">surprised</span>.</p>
+            </div>
+        </div>
+
+        <div class="card p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-3 text-orange-600">Sample TOEFL Question Analysis
+            </h2>
+            <p class="mb-4">The principles ____ by the physicist in the early 20th century are still widely accepted
+                today. <br>(A) developing <br>(B) developed <br>(C) were developed <br>(D) have developed
+            </p>
+            <div class="grid gap-4">
+                <div class="bg-indigo-100 p-4 rounded-lg">
+                    <h3 class="font-bold text-indigo-800">Step-by-Step Analysis:</h3>
+                    <ol class="list-group list-group-numbered">
+                        <li class="list-group-item"> <strong>1. Find the Main Verb</strong>: Look at the sentence after the
+                            blank. The verb "are" is already there.
+                            This means the sentence already has a main verb. </li><br>
+                        <li class="list-group-item"> <strong>2. Eliminate Options</strong>: Because the sentence has a main
+                            verb ("are"), we cannot add another
+                            complete verb. This eliminates (C) "were developed" and (D) "have developed." We are not
+                            looking
+                            for a verb; we are looking for a modifier. </li><br>
+                        <li class="list-group-item"> <strong>3. Choose the Modifier</strong>: Now we're left with (A)
+                            "developing" (-ing) and (B) "developed" (-ed).
+                            Do principles develop something (active), or are they developed by someone (passive)? </li>
+                        <br>
+                    </ol>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Quiz Section -->
+        <div id="quiz-section" class="card p-6">
+            <h2 class="text-3xl font-bold text-center mb-4 text-blue-700">Quiz Time! 🧠</h2>
+            <p id="question" class="text-xl text-center mb-6">The principles ______ by the physicist in the early 20th
+                century are still widely accepted today.</p>
+            <div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Options will be inserted here by JS -->
+            </div>
+            <div class="text-center mt-6">
+                <button id="check-btn"
+                    class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-blue-700 transition-colors disabled:bg-gray-400">Check
+                    Answer</button>
+            </div>
+            <div id="feedback" class="text-center mt-4 font-bold text-xl h-8"></div>
+            <div id="explanation-container"></div>
+        </div>
+
+    </div>
+
+    <script>
+        // --- Interactive Examples ---
+        function revealAnswer(element) {
+            const answerSpan = element.querySelector('.answer-hidden');
+            if (answerSpan) {
+                answerSpan.classList.add('answer-revealed');
+                answerSpan.classList.remove('answer-hidden');
+            }
+        }
+
+        // --- Quiz Logic ---
+        const quizData = [{
+                question: "The principles ______ by the physicist in the early 20th century are still widely accepted today.",
+                options: ["developing", "developed", "were developed", "have developed"],
+                answer: "developed",
+                explanation: "The main verb in the sentence is 'are'. This means we need a modifier, not another verb. Since principles are 'developed by' someone, we need the passive modifier 'developed'."
+            },
+            {
+                question: "The student has ______ all the required reading for the course.",
+                options: ["finish", "finishing", "finished", "was finished"],
+                answer: "finished",
+                explanation: "The rule for perfect tenses is 'have/has/had + past participle'. After 'has', we must use 'finished' (the V3 form)."
+            },
+            {
+                question: "The beautiful song ______ at the concert last night moved everyone.",
+                options: ["played", "was playing", "has played", "it was played"],
+                answer: "played",
+                explanation: "The main verb is 'moved'. We need an adjective to describe 'the beautiful song'. 'Played' acts as an adjective here, answering 'Which song?'."
+            },
+            {
+                question: "I found the lecture incredibly ______. I was ______ by the end of it.",
+                options: ["boring / bored", "bored / boring", "bore / bored", "boring / boring"],
+                answer: "boring / bored",
+                explanation: "The lecture is the CAUSE of the feeling, so it is 'boring' (-ing). Your FEELING is 'bored' (-ed)."
+            },
+            {
+                question: "The ______ child cried after falling from the swing.",
+                options: ["frightening", "frightened", "was frightened", "frighten"],
+                answer: "frightened",
+                explanation: "The child is describing how they FEEL, so we use the -ed form. 'Frightened' acts as an adjective describing the child."
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let selectedOption = null;
+
+        const questionEl = document.getElementById('question');
+        const optionsContainer = document.getElementById('options-container');
+        const checkBtn = document.getElementById('check-btn');
+        const feedbackEl = document.getElementById('feedback');
+        const explanationContainer = document.getElementById('explanation-container');
+
+        function loadQuestion() {
+            // Reset state
+            selectedOption = null;
+            feedbackEl.textContent = '';
+            explanationContainer.innerHTML = ''; // Clear previous explanation
+            checkBtn.disabled = false;
+            checkBtn.textContent = 'Check Answer';
+            checkBtn.onclick = checkAnswer;
+
+            const currentQuestion = quizData[currentQuestionIndex];
+            questionEl.textContent = currentQuestion.question;
+            optionsContainer.innerHTML = '';
+
+            currentQuestion.options.forEach(optionText => {
+                const optionDiv = document.createElement('div');
+                optionDiv.textContent = optionText;
+                optionDiv.className = 'quiz-option p-4 rounded-lg text-center cursor-pointer';
+                optionDiv.onclick = () => selectOption(optionDiv, optionText);
+                optionsContainer.appendChild(optionDiv);
+            });
+        }
+
+        function selectOption(optionDiv, optionText) {
+            // Remove 'selected' from all other options
+            Array.from(optionsContainer.children).forEach(child => {
+                child.classList.remove('selected');
+            });
+
+            // Add 'selected' to the clicked option
+            optionDiv.classList.add('selected');
+            selectedOption = optionText;
+        }
+
+        function checkAnswer() {
+            if (!selectedOption) {
+                feedbackEl.textContent = "Please select an answer first!";
+                feedbackEl.style.color = '#ef4444';
+                return;
+            }
+
+            const currentQuestion = quizData[currentQuestionIndex];
+            const isCorrect = selectedOption === currentQuestion.answer;
+
+            // Display feedback message
+            if (isCorrect) {
+                feedbackEl.textContent = "Correct! 🎉";
+                feedbackEl.style.color = '#22c55e';
+            } else {
+                feedbackEl.textContent = "Not quite, but great try!";
+                feedbackEl.style.color = '#ef4444';
+            }
+
+            // Show explanation
+            explanationContainer.innerHTML = `
+                <div class="explanation-box">
+                    <p class="font-bold">Explanation:</p>
+                    <p>${currentQuestion.explanation}</p>
+                </div>
+            `;
+
+            // Style the options
+            Array.from(optionsContainer.children).forEach((child) => {
+                const optionText = child.textContent;
+                child.onclick = null; // Disable further clicks
+                if (optionText === currentQuestion.answer) {
+                    child.classList.add('correct');
+                } else if (optionText === selectedOption) {
+                    child.classList.add('incorrect');
+                }
+            });
+
+            checkBtn.textContent = 'Next Question';
+            checkBtn.onclick = nextQuestion;
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex = (currentQuestionIndex + 1) % quizData.length;
+            loadQuestion();
+        }
+
+        // Initial load
+        window.onload = loadQuestion;
+    </script>
+</body>
+
+</html>
