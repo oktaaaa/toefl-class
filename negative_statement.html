@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL Practice: Negative Statements</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .option-btn {
+            transition: background-color 0.2s, border-color 0.2s, transform 0.1s;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .negative-text {
+            color: #D9534F;
+        }
+
+        /* Reddish color for negative words */
+        .positive-text {
+            color: #5CB85C;
+        }
+
+        /* Greenish color for positive words */
+    </style>
+</head>
+
+<body class="bg-gray-100 p-4 md:p-8">
+
+    <div id="main-container" class="w-full max-w-3xl bg-white rounded-xl shadow-lg p-6 md:p-8 mx-auto">
+
+        <!-- Explanation Area -->
+        <div id="explanation-area">
+            <h1 class="text-2xl md:text-3xl font-bold text-teal-600 text-center mb-2">Understanding Negative Statements
+            </h1>
+            <p class="text-lg text-gray-600 text-center mb-6">We are like opposites, positive and negative 😂</p>
+
+            <div class="prose max-w-none text-gray-700">
+                <p>In the TOEFL Listening section, a common pattern is for a speaker to make a negative statement. The
+                    correct answer choice is often a positive statement that expresses the same idea. The key is to
+                    listen for the negative and find the answer that uses a positive or opposite word to restate the
+                    idea.</p>
+
+                <h3 class="text-xl font-semibold text-gray-700 mt-6 mb-3">1. Negatives with Opposite Meanings</h3>
+                <p>The speaker says something is <strong>not</strong> one way, which means it is the opposite.</p>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-200 rounded-lg mt-2">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="font-semibold text-gray-600">Example (What you hear)</th>
+                                <th class="font-semibold text-gray-600">Correct Answer (The meaning)</th>
+                                <th class="font-semibold text-gray-600">Negative Expression</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tom is <span class="negative-text font-semibold">not sad</span> about the results.
+                                </td>
+                                <td>Tom is <span class="positive-text font-semibold">happy</span> about the results.
+                                </td>
+                                <td><span class="negative-text font-semibold">not sad</span> = <span
+                                        class="positive-text font-semibold">happy</span></td>
+                            </tr>
+                            <tr>
+                                <td>The class <span class="negative-text font-semibold">isn't difficult</span>.</td>
+                                <td>The class is <span class="positive-text font-semibold">easy</span>.</td>
+                                <td><span class="negative-text font-semibold">not difficult</span> = <span
+                                        class="positive-text font-semibold">easy</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="text-xl font-semibold text-gray-700 mt-6 mb-3">2. Negatives with Logical Equivalents</h3>
+                <p>Sometimes, a negative verb phrase has a single positive verb that means the same thing.</p>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-200 rounded-lg mt-2">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="font-semibold text-gray-600">Example (What you hear)</th>
+                                <th class="font-semibold text-gray-600">Correct Answer (The meaning)</th>
+                                <th class="font-semibold text-gray-600">Negative Expression</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Steve <span class="negative-text font-semibold">did not pass</span> the class.</td>
+                                <td>Steve <span class="positive-text font-semibold">failed</span> the class.</td>
+                                <td><span class="negative-text font-semibold">did not pass</span> = <span
+                                        class="positive-text font-semibold">failed</span></td>
+                            </tr>
+                            <tr>
+                                <td>She <span class="negative-text font-semibold">does not remember</span> the date.
+                                </td>
+                                <td>She <span class="positive-text font-semibold">has forgotten</span> the date.</td>
+                                <td><span class="negative-text font-semibold">does not remember</span> = <span
+                                        class="positive-text font-semibold">forgotten</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="my-8 md:my-12 border-gray-200">
+
+        <!-- Quiz Container -->
+        <div id="quiz-container">
+            <div id="quiz-header" class="mb-6">
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-800 text-center">Practice Quiz</h1>
+                <div id="progress-container" class="mt-4 w-full bg-gray-200 rounded-full h-2.5">
+                    <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+                </div>
+                <p id="question-counter" class="text-sm text-gray-600 text-right mt-2">Question 1 of 10</p>
+            </div>
+
+            <div id="question-area">
+                <div id="conversation"
+                    class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6 space-y-2 text-gray-700">
+                    <p><span class="font-semibold text-blue-700">(Woman)</span> <span id="speaker1-text"></span></p>
+                    <p><span class="font-semibold text-green-700">(Man)</span> <span id="speaker2-text"></span></p>
+                    <p class="italic text-gray-500 mt-2"><span class="font-semibold">(Narrator)</span> <span
+                            id="narrator-text"></span></p>
+                </div>
+                <div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+            </div>
+
+            <div id="feedback-area" class="mt-6 text-center">
+                <p id="feedback-text" class="font-medium h-12"></p>
+                <button id="next-btn"
+                    class="hidden mt-4 w-full md:w-auto bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-transform transform hover:scale-105">
+                    Next Question
+                </button>
+            </div>
+
+            <div id="results-area" class="hidden text-center py-8">
+                <h2 class="text-3xl font-bold text-gray-800">Quiz Complete!</h2>
+                <p class="text-lg text-gray-600 mt-4">Your final score is:</p>
+                <p id="score-text" class="text-5xl font-extrabold text-blue-600 my-4">0 / 10</p>
+                <button id="restart-btn"
+                    class="mt-6 bg-gray-800 text-white font-bold py-3 px-8 rounded-lg hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-transform transform hover:scale-105">
+                    Restart Quiz
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [{
+                conversation: {
+                    speaker1: "How are you finding your new physics class?",
+                    speaker2: "It's not exactly easy.",
+                    narrator: "What does the man mean?"
+                },
+                options: ["The class is simple.", "The class is very difficult.", "He isn't in the physics class.",
+                    "He finds the class uninteresting."
+                ],
+                correctAnswer: 1,
+                explanation: "'Not exactly easy' is an understatement for something that is difficult."
+            },
+            {
+                conversation: {
+                    speaker1: "Do you have the notes from yesterday's lecture?",
+                    speaker2: "I don't seem to remember bringing them with me.",
+                    narrator: "What does the woman mean?"
+                },
+                options: ["She will bring the notes tomorrow.", "She thinks the man has the notes.",
+                    "She forgot her notes.", "She doesn't need the notes."
+                ],
+                correctAnswer: 2,
+                explanation: "'Don't remember bringing' is a polite way of saying she forgot them."
+            },
+            {
+                conversation: {
+                    speaker1: "That new Italian place is great. Do you eat there often?",
+                    speaker2: "I rarely get a chance to eat out.",
+                    narrator: "What does the man mean?"
+                },
+                options: ["He eats at restaurants frequently.", "He owns an Italian restaurant.",
+                    "He doesn't like Italian food.", "He seldom eats in restaurants."
+                ],
+                correctAnswer: 3,
+                explanation: "The word 'rarely' is a hidden negative, meaning 'almost never' or 'seldom'."
+            },
+            {
+                conversation: {
+                    speaker1: "So, how was your trip to the mountains?",
+                    speaker2: "I couldn't have asked for a better vacation.",
+                    narrator: "What does the woman mean?"
+                },
+                options: ["She did not enjoy her vacation.", "The vacation was just okay.",
+                    "Her vacation was wonderful.", "She has had better vacations."
+                ],
+                correctAnswer: 2,
+                explanation: "'Couldn't have asked for a better...' is a strong positive statement meaning it was perfect."
+            },
+            {
+                conversation: {
+                    speaker1: "Was Mark late for the meeting again?",
+                    speaker2: "No, for once he wasn't late.",
+                    narrator: "What does the man mean?"
+                },
+                options: ["Mark missed the meeting.", "Mark arrived on time.", "Mark is usually on time.",
+                    "The meeting was late."
+                ],
+                correctAnswer: 1,
+                explanation: "'Wasn't late' is the direct opposite of being late, meaning he arrived on time."
+            },
+            {
+                conversation: {
+                    speaker1: "How did your brother do in the marathon?",
+                    speaker2: "He didn't win, but he did finish.",
+                    narrator: "What does the woman say about her brother?"
+                },
+                options: ["Her brother lost the race.", "Her brother won the race.",
+                    "Her brother didn't enter the marathon.", "Her brother is a professional runner."
+                ],
+                correctAnswer: 0,
+                explanation: "'Didn't win' is a direct equivalent of 'lost' the race."
+            },
+            {
+                conversation: {
+                    speaker1: "Did you understand the professor's explanation?",
+                    speaker2: "I could scarcely follow his logic.",
+                    narrator: "What does the man mean?"
+                },
+                options: ["He understood the explanation perfectly.", "He missed the explanation.",
+                    "He understood almost nothing.", "He followed the professor to his office."
+                ],
+                correctAnswer: 2,
+                explanation: "'Scarcely' is a hidden negative meaning 'almost not at all'."
+            },
+            {
+                conversation: {
+                    speaker1: "I thought his idea for the project was terrible.",
+                    speaker2: "Well, it wasn't an unreasonable suggestion.",
+                    narrator: "What does the woman mean?"
+                },
+                options: ["She thinks the suggestion was very bad.", "She believes the suggestion was logical.",
+                    "She didn't hear the suggestion.", "The suggestion was not helpful."
+                ],
+                correctAnswer: 1,
+                explanation: "The double negative 'not unreasonable' means it was reasonable or logical."
+            },
+            {
+                conversation: {
+                    speaker1: "How is Michael feeling after his long flight?",
+                    speaker2: "He isn't very energetic today.",
+                    narrator: "What does the man say about Michael?"
+                },
+                options: ["Michael is full of energy.", "Michael is tired.", "Michael didn't take a flight.",
+                    "Michael is feeling sick."
+                ],
+                correctAnswer: 1,
+                explanation: "'Isn't very energetic' implies a lack of energy, meaning he is tired."
+            },
+            {
+                conversation: {
+                    speaker1: "Were you able to fix the coffee machine?",
+                    speaker2: "The problem was not impossible to solve.",
+                    narrator: "What does the woman mean?"
+                },
+                options: ["She could not fix the machine.", "The problem was extremely difficult.",
+                    "She was able to fix the machine.", "The machine is still broken."
+                ],
+                correctAnswer: 2,
+                explanation: "The double negative 'not impossible' means that it was possible to solve."
+            }
+        ];
+
+        // --- DOM Elements ---
+        const speaker1Text = document.getElementById('speaker1-text');
+        const speaker2Text = document.getElementById('speaker2-text');
+        const narratorText = document.getElementById('narrator-text');
+        const optionsContainer = document.getElementById('options-container');
+        const feedbackText = document.getElementById('feedback-text');
+        const nextBtn = document.getElementById('next-btn');
+        const restartBtn = document.getElementById('restart-btn');
+        const questionCounter = document.getElementById('question-counter');
+        const progressBar = document.getElementById('progress-bar');
+        const quizHeader = document.getElementById('quiz-header');
+        const questionArea = document.getElementById('question-area');
+        const feedbackArea = document.getElementById('feedback-area');
+        const resultsArea = document.getElementById('results-area');
+        const scoreText = document.getElementById('score-text');
+
+        // --- State Variables ---
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let answerSelected = false;
+
+        // --- Functions ---
+        function loadQuestion() {
+            answerSelected = false;
+            const currentQuestion = quizData[currentQuestionIndex];
+            speaker1Text.textContent = currentQuestion.conversation.speaker1;
+            speaker2Text.textContent = currentQuestion.conversation.speaker2;
+            narratorText.textContent = currentQuestion.conversation.narrator;
+            optionsContainer.innerHTML = '';
+            currentQuestion.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.innerHTML =
+                    `<span class="font-bold mr-2">${String.fromCharCode(65 + index)}.</span> ${option}`;
+                button.classList.add('option-btn', 'w-full', 'text-left', 'p-4', 'border-2', 'border-gray-300',
+                    'rounded-lg', 'bg-white', 'hover:bg-gray-50', 'hover:border-blue-500',
+                    'focus:outline-none', 'focus:ring-2', 'focus:ring-blue-400', 'disabled:opacity-50',
+                    'disabled:cursor-not-allowed');
+                button.dataset.index = index;
+                button.addEventListener('click', selectAnswer);
+                optionsContainer.appendChild(button);
+            });
+            questionCounter.textContent = `Question ${currentQuestionIndex + 1} of ${quizData.length}`;
+            const progressPercentage = ((currentQuestionIndex) / quizData.length) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+            feedbackText.textContent = '';
+            nextBtn.classList.add('hidden');
+        }
+
+        function selectAnswer(e) {
+            if (answerSelected) return;
+            answerSelected = true;
+            const selectedButton = e.currentTarget;
+            const selectedIndex = parseInt(selectedButton.dataset.index);
+            const correctIndex = quizData[currentQuestionIndex].correctAnswer;
+            const allOptions = optionsContainer.querySelectorAll('.option-btn');
+            allOptions.forEach(btn => btn.disabled = true);
+            if (selectedIndex === correctIndex) {
+                score++;
+                selectedButton.classList.remove('border-gray-300', 'hover:bg-gray-50');
+                selectedButton.classList.add('bg-green-100', 'border-green-500', 'text-green-800');
+                feedbackText.textContent = 'Correct!';
+                feedbackText.classList.add('text-green-600');
+                feedbackText.classList.remove('text-red-600');
+            } else {
+                selectedButton.classList.remove('border-gray-300', 'hover:bg-gray-50');
+                selectedButton.classList.add('bg-red-100', 'border-red-500', 'text-red-800');
+                const correctButton = optionsContainer.querySelector(`[data-index='${correctIndex}']`);
+                correctButton.classList.remove('border-gray-300', 'hover:bg-gray-50');
+                correctButton.classList.add('bg-green-100', 'border-green-500', 'text-green-800');
+                feedbackText.innerHTML =
+                    `<span class="font-bold">Incorrect.</span> ${quizData[currentQuestionIndex].explanation}`;
+                feedbackText.classList.add('text-red-600');
+                feedbackText.classList.remove('text-green-600');
+            }
+            nextBtn.textContent = currentQuestionIndex < quizData.length - 1 ? 'Next Question' : 'Show Results';
+            nextBtn.classList.remove('hidden');
+        }
+
+        function showResults() {
+            quizHeader.classList.add('hidden');
+            questionArea.classList.add('hidden');
+            feedbackArea.classList.add('hidden');
+            resultsArea.classList.remove('hidden');
+            scoreText.textContent = `${score} / ${quizData.length}`;
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            resultsArea.classList.add('hidden');
+            quizHeader.classList.remove('hidden');
+            questionArea.classList.remove('hidden');
+            feedbackArea.classList.remove('hidden');
+            loadQuestion();
+        }
+
+        // --- Event Listeners ---
+        nextBtn.addEventListener('click', () => {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizData.length) {
+                loadQuestion();
+            } else {
+                progressBar.style.width = '100%';
+                showResults();
+            }
+        });
+
+        restartBtn.addEventListener('click', restartQuiz);
+
+        // --- Initial Load ---
+        document.addEventListener('DOMContentLoaded', loadQuestion);
+    </script>
+</body>
+
+</html>
