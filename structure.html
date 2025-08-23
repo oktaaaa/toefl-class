@@ -75,6 +75,21 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       transition: transform 0.2s;
       cursor: pointer;
+      position: relative;
+    }
+
+    .new-item::after {
+      content: 'NEW';
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background-color: #ef4444;
+      /* red-500 */
+      color: white;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
     }
 
     .card:hover {
@@ -156,6 +171,12 @@
         <a href="https://oktaaaa.github.io/toefl-class/past_participle.html" class="card">
           <div class="card-icon">⏳</div>
           <h3>Past Participle</h3>
+          <p>Click to open</p>
+        </a>
+
+        <a href="/coordinate_connectors.html" class="card new-item">
+          <div class="card-icon">📝</div>
+          <h3>Coordinate Connectors</h3>
           <p>Click to open</p>
         </a>
 
