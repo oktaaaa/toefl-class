@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL Pronoun Referent Practice</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=Darker+Grotesque:wght@300..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Platypi:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: "Afacad Flux", sans-serif;
+            font-size: 1.5rem;
+        }
+
+        .explanation {
+            display: none;
+            border-left: 4px solid;
+            padding-left: 1rem;
+            margin-top: 1rem;
+        }
+
+        .correct {
+            border-color: #22c55e;
+            /* green-500 */
+        }
+
+        .incorrect {
+            border-color: #ef4444;
+            /* red-500 */
+        }
+
+        .option-label {
+            display: block;
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .option-label:hover {
+            background-color: #f3f4f6;
+        }
+
+        input[type="radio"]:checked+.option-label {
+            background-color: #dbeafe;
+            /* blue-100 */
+            border-color: #3b82f6;
+            /* blue-500 */
+        }
+
+        input[type="radio"]:disabled+.option-label {
+            cursor: not-allowed;
+            background-color: #f9fafb;
+            color: #9ca3af;
+        }
+
+        .nav-btn:disabled {
+            background-color: #d1d5db;
+            cursor: not-allowed;
+        }
+
+        .highlight-pronoun {
+            color: #ff0000;
+            /* green-600 */
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-blue-600">Find Pronoun Referent</h1>
+            <p class="text-lg text-gray-600 mt-2">"Who is it?"</p>
+        </header>
+
+        <!-- Instructional Content Section -->
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h2 class="text-2xl font-semibold border-b pb-2 mb-4 text-blue-700">🎯 The Goal</h2>
+            <p class="mb-4">To identify the antecedent (the noun
+                that came before) for a specific pronoun highlighted in the text. <br>
+
+                In simple terms: The question asks, "What noun does 'it,' 'they,' 'that,' or 'which' refer to?" <br>
+
+                <strong> Question Format:</strong>
+                "The word 'they' in paragraph X refers to..."
+
+            </p>
+
+
+            <h2 class="text-2xl font-semibold border-b pb-2 mb-4 mt-6 text-blue-700">Pronoun & Referent</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-lg mb-2">Pronoun</h3>
+                    <p>A word that takes the place of a noun (e.g., he, she, it, they, them, which, who, that,
+                        these).</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-lg mb-2">Referent (or Antecedent)</h3>
+                    <p>The specific noun that the pronoun refers back to.</p>
+                </div>
+            </div>
+
+            <h2 class="text-2xl font-semibold border-b pb-2 mb-4 mt-6 text-blue-700">📝 Your Mission: Crack the Pronoun
+                Code!</h2>
+            <div class="mt-4 bg-gray-50 p-6 rounded-lg border-2 border-dashed border-gray-300">
+                <ol class="space-y-4">
+                    <li class="flex items-start">
+                        <span class="text-3xl mr-4">🎯</span>
+                        <div>
+                            <strong class="text-gray-900">Step 1: Identify the Target</strong>
+                            <p class="text-gray-600">Your first objective is to find the pronoun. Lock onto it and
+                                analyze its role in the sentence.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-3xl mr-4">🔍</span>
+                        <div>
+                            <strong class="text-gray-900">Step 2: Scan the Area for a Match</strong>
+                            <p class="text-gray-600">The pronoun's true identity (the noun) is hiding nearby, usually
+                                right before it. Scan the area for potential noun matches.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-3xl mr-4">📊</span>
+                        <div>
+                            <strong class="text-gray-900">Step 3: Run a Background Check</strong>
+                            <p class="text-gray-600">Does the noun's profile match the pronoun's? A plural pronoun like
+                                'they' needs a plural noun. This check will expose any impostors!</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-3xl mr-4">🕵️‍♂️</span>
+                        <div>
+                            <strong class="text-gray-900">Step 4: Make the Swap & Verify</strong>
+                            <p class="text-gray-600">To confirm, swap the pronoun with your top suspect (the noun). Read
+                                it aloud. If the message is clear and makes perfect sense, mission accomplished!</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+
+
+            <h2 class="text-3xl font-semibold text-center border-b pb-2 mb-4 mt-6 text-blue-700">Practice Questions</h2>
+            <div id="practice-container">
+                <!-- Question will be dynamically inserted here -->
+            </div>
+
+            <div id="navigation-controls" class="mt-4 flex justify-between items-center">
+                <button id="prev-btn"
+                    class="nav-btn px-6 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400 transition-colors">Previous</button>
+                <div id="progress-indicator" class="text-lg font-semibold text-gray-700"></div>
+                <button id="next-btn"
+                    class="nav-btn px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">Next
+                    Question</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        const practiceQuestions = [{
+                passage: `"The Artic fox has a coat that changes color with the seasons. In the winter, its fur is a thick, brilliant white, which allows <span class="highlight-pronoun">it</span> to blend in with the snowy landscape. This camouflage is essential for hunting prey and avoiding predators, such as polar bears and wolves. These animals are the fox's main threats in the harsh tundra environment."`,
+                question: "The word 'it' in the passage refers to...",
+                options: ["the winter", "the coat", "the landscape", "the Arctic fox"],
+                correctAnswer: 3,
+                explanation: "<strong>1. Locate:</strong> 'it' is in the second sentence. <strong><br>2. Look Backwards:</strong> Noun candidates before 'it' are *Arctic fox*, *coat*, *seasons*, *winter*, *fur*, and *landscape*. <strong>3. Check Agreement:</strong> 'it' is a singular pronoun. This eliminates *seasons*. <strong>4. Substitute and Test:</strong> '...allows <strong>the Arctic fox</strong> to blend in...' makes the most logical sense. The fox uses its fur to blend in."
+            },
+            {
+                passage: `"<strong>Elephants</strong> are the largest land animals on Earth. They are known for their large ears, long trunks, and strong tusks, which they use for a variety of tasks."`,
+                question: "The word 'They' in the passage refers to...",
+                options: ["land animals", "tasks", "Elephants", "ears"],
+                correctAnswer: 2,
+                explanation: "<strong>1. Locate:</strong> 'They' is in the second sentence. <strong>2. Look Backwards:</strong> Plural noun candidates from the first sentence are 'Elephants' and 'land animals'. <strong>3. Check Agreement:</strong> 'They' is a plural pronoun, which matches both candidates. <strong>4. Substitute and Test:</strong> Replacing 'They' with 'Elephants' makes specific sense as the sentence describes features unique to elephants. 'Land animals' is too general."
+            },
+            {
+                passage: `"The <strong>Sun</strong> is a star at the center of our solar system. It provides the heat and light that make life on Earth possible."`,
+                question: "The word 'It' in the passage refers to...",
+                options: ["The Sun", "our solar system", "life", "Earth"],
+                correctAnswer: 0,
+                explanation: "<strong>1. Locate:</strong> 'It' is in the second sentence. <strong>2. Look Backwards:</strong> Singular noun candidates are 'The Sun', 'star', and 'solar system'. <strong>3. Check Agreement:</strong> 'It' is singular, matching all candidates. <strong>4. Substitute and Test:</strong> 'The Sun provides the heat and light...' is a logical continuation of the first sentence. The solar system contains the sun, but the sun itself provides the energy."
+            },
+            {
+                passage: `"<strong>Marie Curie</strong> was a pioneering physicist and chemist who conducted groundbreaking research on radioactivity. Her work earned her Nobel Prizes in two different scientific fields."`,
+                question: "The word 'Her' in the passage refers to...",
+                options: ["research", "radioactivity", "a physicist", "Marie Curie"],
+                correctAnswer: 3,
+                explanation: "<strong>1. Locate:</strong> 'Her' is in the second sentence. <strong>2. Look Backwards:</strong> The main noun is 'Marie Curie'. <strong>3. Check Agreement:</strong> 'Her' is a singular, female possessive pronoun, which perfectly matches 'Marie Curie'. <strong>4. Substitute and Test:</strong> 'Marie Curie's work earned her...' makes perfect logical sense."
+            },
+            {
+                passage: `"<strong>Photosynthesis</strong> is a process used by plants to convert light into energy. It is essential for the growth of the plant and the production of oxygen."`,
+                question: "The word 'It' in the passage refers to...",
+                options: ["light", "energy", "a process", "Photosynthesis"],
+                correctAnswer: 3,
+                explanation: "<strong>1. Locate:</strong> 'It' is in the second sentence. <strong>2. Look Backwards:</strong> The primary noun candidates are 'Photosynthesis' and 'process'. <strong>3. Check Agreement:</strong> 'It' is singular. Both candidates fit. <strong>4. Substitute and Test:</strong> 'Photosynthesis is essential...' is more specific and logical than 'A process is essential...'. The passage defines a specific process and then explains its importance."
+            },
+            {
+                passage: `"<strong>Farmers</strong> around the world work hard to grow crops like wheat and corn. They must often contend with challenges such as bad weather and pests."`,
+                question: "The word 'They' in the passage refers to...",
+                options: ["pests", "Farmers", "crops", "challenges"],
+                correctAnswer: 1,
+                explanation: "<strong>1. Locate:</strong> 'They' is in the second sentence. <strong>2. Look Backwards:</strong> Plural noun candidates are 'Farmers' and 'crops'. <strong>3. Check Agreement:</strong> 'They' is plural and matches both. <strong>4. Substitute and Test:</strong> 'Farmers must often contend with challenges...' makes logical sense, as people contend with things. 'Crops must often contend...' is not logical; crops are affected by challenges but do not actively contend."
+            },
+            {
+                passage: `"The <strong>Great Wall of China</strong> is one of the most impressive architectural feats in history. It was built over centuries to protect Chinese states from raids and invasions."`,
+                question: "The word 'It' in the passage refers to...",
+                options: ["The Great Wall of China", "history", "a Chinese state", "an invasion"],
+                correctAnswer: 0,
+                explanation: "<strong>1. Locate:</strong> 'It' is in the second sentence. <strong>2. Look Backwards:</strong> The main subject is 'The Great Wall of China'. <strong>3. Check Agreement:</strong> 'It' is singular, treating the Great Wall as a single entity. <strong>4. Substitute and Test:</strong> 'The Great Wall of China was built...' is a direct and logical continuation of the first sentence's topic."
+            },
+            {
+                passage: `"<strong>Penguins</strong> are flightless birds that live almost exclusively in the Southern Hemisphere. Their distinctive black and white plumage serves as camouflage in the water."`,
+                question: "The word 'Their' in the passage refers to...",
+                options: ["birds", "Penguins", "the Southern Hemisphere", "camouflage"],
+                correctAnswer: 1,
+                explanation: "<strong>1. Locate:</strong> 'Their' is in the second sentence. <strong>2. Look Backwards:</strong> Plural candidates are 'Penguins' and 'birds'. <strong>3. Check Agreement:</strong> 'Their' is a plural possessive pronoun. <strong>4. Substitute and Test:</strong> 'Penguins' distinctive plumage...' is the most specific and accurate choice. 'Birds' is too general, as the description does not apply to all birds."
+            },
+            {
+                passage: `"The <strong>water cycle</strong> describes the continuous movement of water on, above, and below the surface of the Earth. This system, <strong>which</strong> includes evaporation and precipitation, is vital for all living things."`,
+                question: "The word 'which' in the passage refers to...",
+                options: ["the Earth", "all living things", "precipitation", "This system"],
+                correctAnswer: 3,
+                explanation: "<strong>1. Locate:</strong> 'which' is in the second sentence. <strong>2. Look Backwards:</strong> The relative pronoun 'which' refers to the noun phrase immediately before it. <strong>3. Check Agreement:</strong> The preceding noun phrase is 'This system'. <strong>4. Substitute and Test:</strong> 'This system includes evaporation and precipitation...' makes perfect sense. The system itself is the water cycle."
+            },
+            {
+                passage: `"<strong>Smartphones</strong> have become an essential tool in modern life. They allow users to communicate, access information, and navigate with ease."`,
+                question: "The word 'They' in the passage refers to...",
+                options: ["users", "modern life", "Smartphones", "information"],
+                correctAnswer: 2,
+                explanation: "<strong>1. Locate:</strong> 'They' is in the second sentence. <strong>2. Look Backwards:</strong> The only plural subject from the first sentence is 'Smartphones'. <strong>3. Check Agreement:</strong> 'They' is plural and matches 'Smartphones'. <strong>4. Substitute and Test:</strong> 'Smartphones allow users to communicate...' directly follows the topic and makes complete sense."
+            },
+            {
+                passage: `"The <strong>Renaissance</strong> was a period of great cultural and artistic change in Europe. Its influence can still be seen today in art, architecture, and literature."`,
+                question: "The word 'Its' in the passage refers to...",
+                options: ["The Renaissance", "Europe", "a period", "art"],
+                correctAnswer: 0,
+                explanation: "<strong>1. Locate:</strong> 'Its' is in the second sentence. <strong>2. Look Backwards:</strong> The main subject is 'The Renaissance'. <strong>3. Check Agreement:</strong> 'Its' is a singular possessive pronoun. <strong>4. Substitute and Test:</strong> 'The Renaissance's influence...' is the most logical choice. The passage is about the influence of that specific period."
+            },
+            {
+                passage: `"<strong>Ants</strong> are social insects that live in highly organized colonies. A queen leads the colony, and worker ants are responsible for finding food for <strong>them</strong>."`,
+                question: "The word 'them' in the passage refers to...",
+                options: ["worker ants", "social insects", "Ants", "colonies"],
+                correctAnswer: 2,
+                explanation: "<strong>1. Locate:</strong> 'them' is at the end of the second sentence. <strong>2. Look Backwards:</strong> Plural candidates are 'Ants', 'insects', and 'colonies'. <strong>3. Check Agreement:</strong> 'them' is plural. <strong>4. Substitute and Test:</strong> Worker ants find food for the whole colony, which is made of 'Ants'. While 'colonies' is also plausible, 'Ants' is the primary subject of the entire passage, representing the members of the colony."
+            },
+            {
+                passage: `"<strong>Google</strong> is a technology company that specializes in Internet-related services and products. Its most famous product is its search engine, used by billions of people worldwide."`,
+                question: "The word 'Its' in the passage refers to...",
+                options: ["a product", "the Internet", "a technology company", "Google"],
+                correctAnswer: 3,
+                explanation: "<strong>1. Locate:</strong> 'Its' is in the second sentence. <strong>2. Look Backwards:</strong> The main subject is 'Google'. <strong>3. Check Agreement:</strong> 'Its' is a singular possessive pronoun. <strong>4. Substitute and Test:</strong> 'Google's most famous product...' is specific and logical. 'A technology company's product...' is too general."
+            },
+            {
+                passage: `"<strong>Chocolate</strong> is made from the beans of the cacao tree. This popular treat, <strong>which</strong> is enjoyed all over the world, has a rich and complex history."`,
+                question: "The word 'which' in the passage refers to...",
+                options: ["the world", "This popular treat", "the cacao tree", "history"],
+                correctAnswer: 1,
+                explanation: "<strong>1. Locate:</strong> 'which' is in the second sentence. <strong>2. Look Backwards:</strong> The pronoun 'which' refers to the noun phrase immediately before it. <strong>3. Check Agreement:</strong> The preceding phrase is 'This popular treat'. <strong>4. Substitute and Test:</strong> The sentence means 'This popular treat is enjoyed all over the world...'. The phrase itself refers back to 'Chocolate'."
+            },
+            {
+                passage: `"<strong>Glass</strong> is an amorphous solid material that is most often transparent. It is used in countless applications, from windows to smartphone screens."`,
+                question: "The word 'It' in the passage refers to...",
+                options: ["a smartphone screen", "an application", "Glass", "a material"],
+                correctAnswer: 2,
+                explanation: "<strong>1. Locate:</strong> 'It' is in the second sentence. <strong>2. Look Backwards:</strong> The main subject is 'Glass'. <strong>3. Check Agreement:</strong> 'It' is singular. <strong>4. Substitute and Test:</strong> 'Glass is used in countless applications...' is a direct continuation of the first sentence, which defines glass."
+            },
+            {
+                passage: `"<strong>Gravity</strong> is the fundamental force of attraction that exists between any two objects with mass. It is what keeps the planets in orbit around the sun and what keeps us on the ground."`,
+                question: "The word 'It' in the passage refers to...",
+                options: ["the sun", "an orbit", "mass", "Gravity"],
+                correctAnswer: 3,
+                explanation: "<strong>1. Locate:</strong> 'It' is in the second sentence. <strong>2. Look Backwards:</strong> The main subject defined in the first sentence is 'Gravity'. <strong>3. Check Agreement:</strong> 'It' is a singular pronoun. <strong>4. Substitute and Test:</strong> 'Gravity is what keeps the planets in orbit...' logically explains the function of the concept defined in the first sentence."
+            },
+            {
+                passage: `"The theory of <strong>plate tectonics</strong>, which only gained widespread acceptance in the 1960s, fundamentally altered the field of geology. It proposes that the Earth's outer shell is divided into several large plates that glide over the mantle. This movement is responsible for many geological phenomena."`,
+                question: "The word 'It' in the passage refers to...",
+                options: ["the field of geology", "the Earth's outer shell", "The theory of plate tectonics",
+                    "the mantle"
+                ],
+                correctAnswer: 2,
+                explanation: "<strong>1. Locate:</strong> 'It' is in the second sentence. <strong>2. Look Backwards:</strong> Candidates include 'The theory of plate tectonics' and 'the field of geology'. <strong>3. Check Agreement:</strong> 'It' is singular. <strong>4. Substitute and Test:</strong> 'The theory of plate tectonics proposes that...' makes logical sense, as a theory is a set of proposals. A field of study does not propose things itself."
+            },
+            {
+                passage: `"<strong>Impressionism</strong> was a 19th-century art movement characterized by small brush strokes and an emphasis on the accurate depiction of light. A key feature was its emphasis on the changing qualities of light. Artists of this movement, such as Monet, sought to capture the 'impression' of a scene."`,
+                question: "The word 'its' in the passage refers to...",
+                options: ["a 19th-century art movement", "Impressionism", "open composition", "light"],
+                correctAnswer: 1,
+                explanation: "<strong>1. Locate:</strong> 'its' is in the second sentence. <strong>2. Look Backwards:</strong> The main subject is 'Impressionism'. <strong>3. Check Agreement:</strong> 'Its' is a singular possessive pronoun. <strong>4. Substitute and Test:</strong> 'Impressionism's emphasis...' is the most specific and logical choice. The passage is defining the features of this particular movement."
+            },
+            {
+                passage: `"The removal of <strong>forests</strong>, known as deforestation, has severe consequences. It contributes to climate change and leads to the destruction of habitats. These <strong>impacts</strong>, including soil erosion, are not just local; they have far-reaching effects."`,
+                question: "The word 'they' in the passage refers to...",
+                options: ["local climate patterns", "these impacts", "species", "forests"],
+                correctAnswer: 1,
+                explanation: "<strong>1. Locate:</strong> 'they' is in the final clause. <strong>2. Look Backwards:</strong> Plural candidates are 'forests', 'consequences', and 'impacts'. <strong>3. Check Agreement:</strong> 'they' is plural. <strong>4. Substitute and Test:</strong> The sentence starts with 'These impacts...'. Using 'they' in the same sentence continues to refer to those same impacts. 'These impacts have far-reaching effects' is the clear meaning."
+            },
+            {
+                passage: `"The Incan citadel of <strong>Machu Picchu</strong> is perched high in the Andes Mountains. Its giant walls and terraces seem carved from the rock on which it is situated. While often called the 'Lost City,' its purpose remains a debate, with some arguing <strong>it</strong> was a royal estate."`,
+                question: "The word 'it' in the passage refers to...",
+                options: ["a royal estate", "the rock", "Machu Picchu", "a religious site"],
+                correctAnswer: 2,
+                explanation: "<strong>1. Locate:</strong> 'it' is in the final clause. <strong>2. Look Backwards:</strong> The main subject of the entire passage is 'Machu Picchu'. <strong>3. Check Agreement:</strong> 'it' is singular. <strong>4. Substitute and Test:</strong> '...some arguing Machu Picchu was a royal estate' makes perfect sense within the context of the debate about the site's purpose."
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let correctAnswersCount = 0;
+        const answeredQuestions = new Set();
+        const practiceContainer = document.getElementById('practice-container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressIndicator = document.getElementById('progress-indicator');
+
+        function showQuestion(index) {
+            const q = practiceQuestions[index];
+            practiceContainer.innerHTML = `
+                <div class="bg-white p-6 rounded-lg shadow-md animate-fade-in">
+                    <p class=" mb-4 ">${q.passage}</p>
+                    <p class="font-semibold mb-4">${index + 1}. ${q.question}</p>
+                    <div class="space-y-3">
+                        ${q.options.map((opt, i) => `
+                            <div>
+                                <input type="radio" name="question-${index}" id="q-${index}-o-${i}" value="${i}" class="hidden">
+                                <label for="q-${index}-o-${i}" class="option-label">${String.fromCharCode(65 + i)}. ${opt}</label>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <button id="check-answer-btn" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors" onclick="checkAnswer()">Check Answer</button>
+                    <div id="feedback" class="mt-4 font-semibold"></div>
+                    <div id="explanation" class="explanation">
+                        <h4 class="font-bold">Explanation:</h4>
+                        <p>${q.explanation}</p>
+                    </div>
+                </div>
+            `;
+            updateNavigation();
+        }
+
+        function checkAnswer() {
+            // Prevent re-answering a question
+            if (answeredQuestions.has(currentQuestionIndex)) return;
+
+            const selectedOption = document.querySelector(`input[name="question-${currentQuestionIndex}"]:checked`);
+            const feedbackDiv = document.getElementById('feedback');
+            const explanationDiv = document.getElementById('explanation');
+            const questionData = practiceQuestions[currentQuestionIndex];
+
+            if (!selectedOption) {
+                feedbackDiv.textContent = "Please select an answer.";
+                feedbackDiv.className = "mt-4 font-semibold text-yellow-600";
+                return;
+            }
+
+            answeredQuestions.add(currentQuestionIndex);
+            const selectedValue = parseInt(selectedOption.value);
+
+            if (selectedValue === questionData.correctAnswer) {
+                correctAnswersCount++;
+                feedbackDiv.textContent = "Correct!";
+                feedbackDiv.className = "mt-4 font-semibold text-green-600";
+                explanationDiv.classList.add('correct');
+            } else {
+                feedbackDiv.textContent = "Incorrect. The correct answer is " + String.fromCharCode(65 + questionData
+                    .correctAnswer) + ".";
+                feedbackDiv.className = "mt-4 font-semibold text-red-600";
+                explanationDiv.classList.add('incorrect');
+            }
+
+            explanationDiv.style.display = 'block';
+
+            // Disable all radio buttons and the check button for this question
+            const radioButtons = document.querySelectorAll(`input[name="question-${currentQuestionIndex}"]`);
+            radioButtons.forEach(rb => rb.disabled = true);
+            document.getElementById('check-answer-btn').disabled = true;
+            document.getElementById('check-answer-btn').classList.add('nav-btn:disabled');
+        }
+
+        function updateNavigation() {
+            progressIndicator.textContent = `Question ${currentQuestionIndex + 1} of ${practiceQuestions.length}`;
+            prevBtn.disabled = currentQuestionIndex === 0;
+            if (currentQuestionIndex === practiceQuestions.length - 1) {
+                nextBtn.textContent = 'Finish';
+            } else {
+                nextBtn.textContent = 'Next Question';
+            }
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion(currentQuestionIndex);
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestionIndex < practiceQuestions.length - 1) {
+                currentQuestionIndex++;
+                showQuestion(currentQuestionIndex);
+            } else {
+                const score = correctAnswersCount;
+                const total = practiceQuestions.length;
+                let message = "You did great!";
+                if (score / total < 0.5) {
+                    message = "Good effort, keep practicing!";
+                } else if (score / total >= 0.9) {
+                    message = "Excellent work!";
+                }
+
+                practiceContainer.innerHTML = `<div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <h3 class="text-3xl font-bold text-blue-700">${message}</h3>
+                    <p class="mt-4 text-gray-800 text-2xl">Your Score: ${score} / ${total}</p>
+                    <button class="mt-6 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors" onclick="location.reload()">Practice Again</button>
+                </div>`;
+
+                nextBtn.style.display = 'none';
+                prevBtn.style.display = 'none';
+                progressIndicator.textContent = 'Finished';
+
+                // Fire confetti
+                confetti({
+                    particleCount: 200,
+                    spread: 100,
+                    origin: {
+                        y: 0.6
+                    }
+                });
+            }
+        });
+
+        window.onload = () => showQuestion(currentQuestionIndex);
+    </script>
+</body>
+
+</html>
