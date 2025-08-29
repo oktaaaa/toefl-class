@@ -68,6 +68,7 @@
     }
 
     .card {
+      position: relative;
       background: white;
       border-radius: 12px;
       padding: 16px;
@@ -84,6 +85,20 @@
     .card-icon {
       font-size: 36px;
       margin-bottom: 10px;
+    }
+
+    .new-item::after {
+      content: 'NEW';
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background-color: #ef4444;
+      /* red-500 */
+      color: white;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
     }
 
     .badge {
@@ -152,28 +167,14 @@
           <h3>Find "Unstated" Details</h3>
           <p>Click to open</p>
         </a>
-        <a href="/pronoun_referent.html" class="card">
+
+        <a href="https://oktaaaa.github.io/toefl-class/pronoun_referent.html" class="card new-item">
           <div class="card-icon">⏳</div>
           <h3>Find Pronoun Referent</h3>
           <p>Click to open</p>
         </a>
-        <!-- <a href="https://oktaaaa.github.io/toefl-class/past_participle.html" class="card">
-          <div class="card-icon">⏳</div>
-          <h3>Past Participle</h3>
-          <p>Click to open</p>
-        </a>
 
-        <div class="card">
-          <div class="card-icon">📝</div>
-          <h3>Adjective Clause</h3>
-          <p>Click to open</p>
-        </div>
 
-        <div class="card">
-          <div class="card-icon">🎮</div>
-          <h3>Adverb Clause</h3>
-          <p>Click to open</p>
-        </div> -->
       </div>
     </main>
   </div>

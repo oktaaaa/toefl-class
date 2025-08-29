@@ -14,6 +14,20 @@
       color: #1e293b;
     }
 
+    .new-item::after {
+      content: 'NEW';
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background-color: #ef4444;
+      /* red-500 */
+      color: white;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
     header {
       background: linear-gradient(90deg, #6366f1, #8b5cf6);
       color: white;
@@ -78,19 +92,7 @@
       position: relative;
     }
 
-    .new-item::after {
-      content: 'NEW';
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background-color: #ef4444;
-      /* red-500 */
-      color: white;
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 700;
-    }
+
 
     .card:hover {
       transform: translateY(-4px);
